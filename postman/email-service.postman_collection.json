@@ -1,0 +1,556 @@
+{
+  "info": {
+    "_postman_id": "55d1186e-2064-4dc2-a250-e6c8a9e7a2e3",
+    "name": "Mailbox API",
+    "description": "All API endpoints for the Mailbox app — authentication, user settings, and email core.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "11585991"
+  },
+  "item": [
+    {
+      "name": "Auth & Setup",
+      "item": [
+        {
+          "name": "1. Initial Setup (Create Owner)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"System\",\n  \"lastName\": \"Owner\",\n  \"email\": \"prashantnigam490@gmail.com\",\n  \"password\": \"securepassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/setup",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "setup"]
+            },
+            "description": "Used ONLY ONCE to initialize the database and create the root OWNER account. Will return 403 Forbidden if an owner already exists."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Register Member",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            },
+            "description": "Registers a standard user. By default, all users created through this endpoint are assigned the MEMBER role."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"prashantnigam490@gmail.com\",\n  \"password\": \"securepassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "description": "Authenticates the user and sets a secure, HTTP-only `auth_session` cookie."
+          },
+          "response": []
+        },
+        {
+          "name": "4. Get Current User (/me)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            },
+            "description": "Reads the HTTP-only session cookie (Postman sends this automatically if you just logged in) and returns the user's profile and current role."
+          },
+          "response": []
+        },
+        {
+          "name": "5. Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "logout"]
+            },
+            "description": "Clears the secure, HTTP-only session cookie (`auth_session`) and deletes the active session from the database."
+          },
+          "response": []
+        },
+        {
+          "name": "6. Request Password Reset (Forgot Password)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"prashantnigam490@gmail.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/forgot-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "forgot-password"]
+            },
+            "description": "Requests a password reset token for the specified email address, generating a validation token in the database."
+          },
+          "response": []
+        },
+        {
+          "name": "7. Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<insert_verification_token_here>\",\n  \"password\": \"newsecurepassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/reset-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "reset-password"]
+            },
+            "description": "Resets the user's password using the generated verification token."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Settings & Diagnostics",
+      "item": [
+        {
+          "name": "1. Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Updated\",\n  \"lastName\": \"Name\",\n  \"email\": \"prashantnigam490@gmail.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/user/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "profile"]
+            },
+            "description": "Updates the logged-in user's profile information (first name, last name, email)."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"securepassword123\",\n  \"newPassword\": \"newsecurepassword456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/user/change-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "change-password"]
+            },
+            "description": "Changes the logged-in user's password after verifying their current password."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Get System Diagnostics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/system/db-info",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "system", "db-info"]
+            },
+            "description": "Retrieves active database metrics, active session counts, schema path, and engine info. Only accessible to users with the OWNER role."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Emails",
+      "item": [
+        {
+          "name": "1. Inbound Email (Cloudflare Webhook)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const randomId = Math.floor(Math.random() * 1000000000);",
+                  "pm.variables.set('dynamicMessageId', `<test-message-${randomId}@mail.example.com>`);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-webhook-secret",
+                "value": "dev_webhook_secret_123",
+                "description": "Must match the WEBHOOK_SECRET env variable on the server."
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messageId\": \"{{dynamicMessageId}}\",\n  \"from\": {\n    \"address\": \"jane.doe@example.com\",\n    \"name\": \"Jane Doe\"\n  },\n  \"to\": [\n    { \"address\": \"support@yourdomain.com\" }\n  ],\n  \"subject\": \"Feedback on new feature\",\n  \"text\": \"Hi support, I really love the new simplified mailbox UI! Great job.\",\n  \"html\": \"<p>Hi support, I really love the new simplified mailbox UI! <strong>Great job.</strong></p>\"\n}\n"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/emails",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails"]
+            },
+            "description": "Public endpoint called by Cloudflare Email Routing when an email arrives at a configured address. Authenticated by the x-webhook-secret header, not a user session. Automatically deduplicates by messageId."
+          },
+          "response": []
+        },
+        {
+          "name": "2. List Emails",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/emails?page=1&limit=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (default: 1)"
+                },
+                {
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Items per page (default: 50, max: 100)"
+                },
+                {
+                  "key": "search",
+                  "value": "",
+                  "description": "Search by subject, sender address, or sender name",
+                  "disabled": true
+                },
+                {
+                  "key": "trashed",
+                  "value": "true",
+                  "description": "Filter by trashed emails only",
+                  "disabled": true
+                },
+                {
+                  "key": "starred",
+                  "value": "true",
+                  "description": "Filter by starred/saved emails only",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Returns a paginated list of all emails. Supports filtering by search, trashed, or starred. Each item includes isRead, isSaved and isTrashed flags specific to the currently logged-in user. Requires a valid session cookie."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Get Email by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<email-id>",
+                  "description": "The email's cuid"
+                }
+              ]
+            },
+            "description": "Returns the full email including bodyHtml and bodyText. Also returns isRead and isSaved for the current user. Requires a valid session cookie."
+          },
+          "response": []
+        },
+        {
+          "name": "4. Mark Email as Read",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"read\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<email-id>"
+                }
+              ]
+            },
+            "description": "Marks the email as read for the currently logged-in user only. Other team members are unaffected."
+          },
+          "response": []
+        },
+        {
+          "name": "5. Mark Email as Unread",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"unread\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<email-id>"
+                }
+              ]
+            },
+            "description": "Marks the email as unread for the currently logged-in user only."
+          },
+          "response": []
+        },
+        {
+          "name": "6. Save Email (Star)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"save\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<email-id>"
+                }
+              ]
+            },
+            "description": "Saves / stars the email for the currently logged-in user."
+          },
+          "response": []
+        },
+        {
+          "name": "7. Unsave Email (Unstar)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"unsave\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<email-id>"
+                }
+              ]
+            },
+            "description": "Removes the saved/starred state for the currently logged-in user."
+          },
+          "response": []
+        }
+      ],
+      "description": "Core email endpoints. POST is public (called by Cloudflare). GET/PATCH require a valid session cookie."
+    },
+    {
+      "name": "Mailbox Addresses",
+      "item": [
+        {
+          "name": "1. List Mailbox Addresses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mailbox-addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mailbox-addresses"]
+            },
+            "description": "Returns a list of all mailbox addresses in the system. Requires a valid session cookie."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Create Mailbox Address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"sales@yourdomain.com\",\n  \"displayName\": \"Sales Team\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/mailbox-addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mailbox-addresses"]
+            },
+            "description": "Creates a new inbound mailbox address. Requires OWNER or ADMIN role."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Update Mailbox Address",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"Updated Sales Team\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/mailbox-addresses/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mailbox-addresses", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<mailbox-id>",
+                  "description": "The mailbox address cuid"
+                }
+              ]
+            },
+            "description": "Updates display details or toggles active status of the mailbox. Requires OWNER or ADMIN role."
+          },
+          "response": []
+        },
+        {
+          "name": "4. Delete Mailbox Address",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mailbox-addresses/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mailbox-addresses", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<mailbox-id>",
+                  "description": "The mailbox address cuid"
+                }
+              ]
+            },
+            "description": "Deletes the mailbox address. If role is OWNER, it performs a hard delete (cascading emails). If ADMIN, it performs a soft delete (deactivates)."
+          },
+          "response": []
+        }
+      ],
+      "description": "Manage inbound organization mailbox addresses. Requires OWNER or ADMIN role for modifications."
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "WEBHOOK_SECRET",
+      "value": "change_me_use_openssl_rand_hex_32",
+      "description": "Must match the WEBHOOK_SECRET env variable in your .env file."
+    }
+  ]
+}

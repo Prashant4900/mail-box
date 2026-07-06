@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+:root {
+  /* Mailbox Custom Variables (Light) */
+  --background: #ffffff;
+  --surface: #f7f7f5;
+  --surface-hover: #eeeeec;
+  --border: #ebebea;
+  --border-strong: #d9d9d6;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5e5e5c;
+  --text-muted: #9b9b98;
+  --accent: #1a1a1a;
+  --accent-hover: #2e2e2e;
+  --accent-subtle: #eeeeec;
+
+  /* Semantic Tokens (Light) */
+  --success: #1a7f37;
+  --warning: #9a6700;
+  --destructive: #cf222e;
+
+  /* shadcn/ui minimal necessary variables */
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --primary-foreground: #ffffff;
+  --secondary: #f7f7f5;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f7f7f5;
+  --muted-foreground: #5e5e5c;
+  --ring: #1a1a1a;
+  --input: #ebebea;
+  --radius: 0.375rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Retain shadcn mapping where needed */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+}
+
+.dark {
+  /* Mailbox Custom Variables (Dark) */
+  --background: #191919;
+  --surface: #202020;
+  --surface-hover: #2a2a2a;
+  --border: #2f2f2f;
+  --border-strong: #404040;
+  --text-primary: #ededed;
+  --text-secondary: #b0b0ae;
+  --text-muted: #6f6f6d;
+  --accent: #ededed;
+  --accent-hover: #e0e0e0;
+  --accent-subtle: #2f2f2f;
+
+  /* Semantic Tokens (Dark) */
+  --success: #3fb950;
+  --warning: #d29922;
+  --destructive: #f85149;
+
+  /* shadcn/ui minimal necessary variables */
+  --foreground: #ededed;
+  --card: #202020;
+  --card-foreground: #ededed;
+  --popover: #202020;
+  --popover-foreground: #ededed;
+  --primary: #ededed;
+  --primary-foreground: #191919;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ededed;
+  --muted: #202020;
+  --muted-foreground: #b0b0ae;
+  --ring: #ededed;
+  --input: #2f2f2f;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background;
+    color: var(--text-primary);
+    font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Rich Text Editor Placeholder styling */
+[contenteditable]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  pointer-events: none;
+  display: block;
+}
+

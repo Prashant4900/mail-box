@@ -1,0 +1,471 @@
+{
+  "HomePage": {
+    "title": "Para empezar, edita el archivo page.tsx.",
+    "description": "¿Buscas un punto de partida o más instrucciones? Dirígete a",
+    "templates": "Plantillas",
+    "learning": "Aprendizaje",
+    "deploy": "Desplegar ahora",
+    "documentation": "Documentación"
+  },
+  "Sidebar": {
+    "inbox": "Bandeja de entrada",
+    "mailboxes": "Buzones",
+    "sent": "Enviados",
+    "drafts": "Borradores",
+    "starred": "Destacados",
+    "trash": "Papelera",
+    "users": "Usuarios",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "collapse": "Contraer barra lateral",
+    "expand": "Expandir barra lateral",
+    "closeMenu": "Cerrar menú",
+    "compose": "Redactar"
+  },
+  "Users": {
+    "title": "Usuarios",
+    "subtitle": "Administrar el acceso a la aplicación, usuarios y roles",
+    "addUser": "Agregar usuario",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "role": "Rol",
+    "status": "Estado",
+    "actions": "Acciones",
+    "placeholder": {
+      "title": "La gestión de usuarios estará disponible pronto",
+      "description": "Esta es una interfaz de marcador de posición. Una vez que se complete la función de administración de usuarios, podrá agregar, editar y desactivar cuentas desde esta pantalla."
+    },
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "loading": "Cargando usuarios del sistema...",
+    "editUser": "Editar usuario",
+    "firstNameLabel": "Nombre",
+    "lastNameLabel": "Apellido",
+    "statusDesc": "Habilitar o deshabilitar esta cuenta de usuario",
+    "mailboxAccess": "Acceso a buzones",
+    "noUsersFound": "No se encontraron usuarios.",
+    "noMailboxesFound": "No se encontraron buzones.",
+    "loadingMailboxes": "Cargando buzones...",
+    "allFieldsRequired": "Todos los campos son obligatorios",
+    "saving": "Guardando...",
+    "editDetails": "Editar detalles",
+    "banAccount": "Bloquear cuenta",
+    "unbanAccount": "Desbloquear cuenta",
+    "deleteUser": "Eliminar usuario",
+    "deactivateUser": "Desactivar usuario",
+    "deleteConfirmTitle": "Eliminar usuario",
+    "deactivateConfirmTitle": "Desactivar usuario",
+    "deleteConfirmMessage": "¿Estás seguro de que deseas eliminar a {name}?",
+    "deactivateConfirmMessage": "¿Estás seguro de que deseas desactivar a {name}?",
+    "banConfirmTitle": "Bloquear usuario",
+    "unbanConfirmTitle": "Desbloquear usuario",
+    "banConfirmMessage": "¿Estás seguro de que deseas bloquear a {name}? Esto terminará sus sesiones activas y evitará que inicie sesión.",
+    "unbanConfirmMessage": "¿Estás seguro de que deseas desbloquear a {name}?",
+    "toasts": {
+      "banSuccess": "¡Usuario bloqueado con éxito!",
+      "unbanSuccess": "¡Usuario desbloqueado con éxito!",
+      "deleteSuccess": "¡Usuario eliminado con éxito!",
+      "updateSuccess": "¡Usuario actualizado con éxito!",
+      "createSuccess": "¡Usuario agregado con éxito!",
+      "banError": "Error al actualizar el estado del usuario",
+      "deleteError": "Error al eliminar al usuario",
+      "loadError": "Error al cargar los usuarios"
+    }
+  },
+  "Navbar": {
+    "inbox": "Bandeja de entrada",
+    "settings": "Configuración",
+    "searchPlaceholder": "Buscar...",
+    "searchTooltip": "Buscar",
+    "notificationsTooltip": "Notificaciones",
+    "notificationsTitle": "Notificaciones",
+    "clearAll": "Limpiar todo",
+    "noNotifications": "Sin notificaciones nuevas",
+    "settingsTooltip": "Configuración",
+    "menuLabel": "Abrir menú de navegación"
+  },
+  "Settings": {
+    "loading": "Cargando configuración...",
+    "loginRequired": "Debes iniciar sesión para ver la configuración.",
+    "goToLogin": "Ir a Iniciar Sesión",
+    "title": "Configuración",
+    "subtitle": "Administra tu cuenta y preferencias",
+    "profile": {
+      "title": "Perfil",
+      "subtitle": "Actualiza tu información personal",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Dirección de correo electrónico",
+      "saving": "Guardando...",
+      "saveChanges": "Guardar cambios"
+    },
+    "security": {
+      "title": "Seguridad",
+      "subtitle": "Actualiza tus credenciales de acceso",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar nueva contraseña",
+      "updating": "Actualizando...",
+      "updatePassword": "Actualizar contraseña"
+    },
+    "preferences": {
+      "title": "Preferencias",
+      "subtitle": "Personaliza la configuración de pantalla",
+      "themeMode": "Modo de tema",
+      "themeSubtitle": "Cambia entre estilos visuales",
+      "themeLight": "Claro",
+      "themeDark": "Oscuro",
+      "themeSystem": "Sistema",
+      "language": "Idioma",
+      "languageSubtitle": "Actualiza el idioma de la aplicación"
+    },
+    "diagnostics": {
+      "title": "Diagnóstico del sistema",
+      "subtitle": "Métricas y configuraciones de la base de datos activa",
+      "loading": "Cargando diagnósticos...",
+      "dbEngine": "Motor de base de datos",
+      "activeSchema": "Esquema activo",
+      "dbUrl": "URL de base de datos",
+      "totalUsers": "Usuarios totales",
+      "activeSessions": "Sesiones activas",
+      "error": "Error al cargar la información de diagnóstico del sistema."
+    },
+    "toasts": {
+      "profileSuccess": "¡Perfil actualizado con éxito!",
+      "profileError": "Error al actualizar el perfil",
+      "passwordMatchError": "Las nuevas contraseñas no coinciden",
+      "passwordSuccess": "¡Contraseña actualizada con éxito!",
+      "passwordError": "Error al actualizar la contraseña"
+    },
+    "cloudflare": {
+      "title": "Enrutamiento de correo de Cloudflare",
+      "subtitle": "Conecta programáticamente tu dominio para recibir correos entrantes",
+      "apiToken": "Token de API de Cloudflare",
+      "apiTokenPlaceholder": "Introduce tu token de API...",
+      "domain": "Dominio objetivo",
+      "appUrl": "URL de la aplicación",
+      "submit": "Vincular dominio",
+      "delink": "Desconectar dominio",
+      "linkedStatus": "Integración activa para",
+      "console": "Registro de actividad",
+      "routedDirectly": "Todo el correo entrante a este dominio se enruta directamente a su webhook de Next.js.",
+      "disconnectTitle": "Desconectar integración",
+      "disconnectDesc": "Para eliminar de forma segura el script Cloudflare Worker y limpiar las reglas de enrutamiento de correo electrónico SMTP, confirme su token de API:",
+      "confirmApiToken": "Confirmar token de API",
+      "confirmApiTokenPlaceholder": "Pegue su token de API de Cloudflare...",
+      "removingScript": "Eliminando script...",
+      "noDomainAvailable": "⚠️ Ningún dominio disponible",
+      "noDomainAvailableDesc": "No se encontraron direcciones de buzón activas. Para recibir correo a través del enrutamiento de Cloudflare, primero configure una dirección de buzón con un dominio personalizado.",
+      "configuringSetup": "Configurando..."
+    },
+    "users": {
+      "title": "Gestión de usuarios",
+      "subtitle": "Invitar y administrar miembros del equipo y permisos",
+      "manageButton": "Administrar usuarios"
+    }
+  },
+  "Login": {
+    "title": "Bienvenido de nuevo",
+    "subtitle": "Inicia sesión en tu cuenta de Mailbox.",
+    "setupSuccess": "¡Configuración completa! Ya puedes iniciar sesión.",
+    "forgotSuccess": "¡Enlace de restablecimiento enviado! Por favor revisa tu bandeja de entrada y spam.",
+    "resetSuccess": "¡Restablecimiento completado! Ya puedes iniciar sesión.",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "Introduce tu dirección de correo electrónico...",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Introduce tu contraseña...",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "loggingIn": "Iniciando sesión...",
+    "loginButton": "Iniciar sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "registerHere": "Regístrate aquí"
+  },
+  "Register": {
+    "title": "Crear una cuenta",
+    "subtitle": "Regístrate para comenzar.",
+    "firstName": "Nombre",
+    "firstNamePlaceholder": "Nombre",
+    "lastName": "Apellido",
+    "lastNamePlaceholder": "Apellido",
+    "email": "Dirección de correo electrónico",
+    "emailPlaceholder": "Introduce tu dirección de correo electrónico...",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Crea una contraseña (mínimo 8 caracteres)...",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Confirma tu contraseña...",
+    "creatingAccount": "Creando cuenta...",
+    "createAccountButton": "Crear cuenta",
+    "alreadyAccount": "¿Ya tienes una cuenta?",
+    "loginHere": "Inicia sesión aquí",
+    "passwordsMismatch": "Las contraseñas no coinciden"
+  },
+  "ForgotPassword": {
+    "checkEmail": "Revisa tu correo electrónico",
+    "sentLinkDesc": "Hemos enviado un enlace de restablecimiento de contraseña a tu dirección de correo electrónico. Si no llega pronto, por favor revisa tu carpeta de correo no deseado.",
+    "backToLogin": "Volver a iniciar sesión",
+    "title": "Restablecer contraseña",
+    "subtitle": "Introduce tu correo para recibir un enlace de restablecimiento.",
+    "email": "Dirección de correo electrónico",
+    "emailPlaceholder": "Introduce tu dirección de correo electrónico...",
+    "sending": "Enviando...",
+    "sendResetLink": "Enviar enlace"
+  },
+  "ResetPassword": {
+    "titleComplete": "Restablecimiento completado",
+    "descComplete": "Tu contraseña ha sido actualizada con éxito. Ahora puedes iniciar sesión con tu nueva contraseña.",
+    "goToLogin": "Ir a iniciar sesión",
+    "title": "Crear nueva contraseña",
+    "subtitle": "Elige una nueva contraseña para tu cuenta.",
+    "newPassword": "Nueva contraseña",
+    "newPasswordPlaceholder": "Crea una nueva contraseña...",
+    "confirmPassword": "Confirmar nueva contraseña",
+    "confirmPasswordPlaceholder": "Confirma la nueva contraseña...",
+    "resetting": "Restableciendo...",
+    "resetButton": "Restablecer contraseña",
+    "passwordsMismatch": "Las contraseñas no coinciden"
+  },
+  "Setup": {
+    "title": "Inicializar sistema",
+    "subtitle": "Crea la cuenta OWNER principal.",
+    "firstName": "Nombre",
+    "firstNamePlaceholder": "Nombre",
+    "lastName": "Apellido",
+    "lastNamePlaceholder": "Apellido",
+    "email": "Dirección de correo electrónico",
+    "emailPlaceholder": "owner@example.com",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Crea una contraseña...",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Confirma la contraseña...",
+    "creatingAccount": "Creando cuenta...",
+    "completeSetup": "Completar configuración",
+    "passwordsMismatch": "Las contraseñas no coinciden"
+  },
+  "Mailboxes": {
+    "title": "Direcciones de Buzón",
+    "subtitle": "Administra el enrutamiento de correos entrantes y destinatarios.",
+    "addMailbox": "Añadir Buzón",
+    "editMailbox": "Editar Buzón",
+    "displayName": "Nombre para Mostrar",
+    "emailAddress": "Dirección de Correo",
+    "status": "Estado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "created": "Creado",
+    "actions": "Acciones",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Estás seguro de que deseas eliminar este buzón? Esto eliminará permanentemente todos los correos asociados.",
+    "noMailboxes": "No se encontraron buzones.",
+    "required": "Este campo es requerido",
+    "invalidEmail": "Formato de correo no válido",
+    "readOnlyWarning": "Tienes acceso de solo lectura a las direcciones de buzón.",
+    "loading": "Cargando direcciones de buzón...",
+    "statusDesc": "Alternar estado de recepción activo",
+    "saving": "Guardando...",
+    "noName": "Sin nombre",
+    "confirmDeactivate": "¿Estás seguro de que deseas desactivar este buzón?",
+    "toasts": {
+      "createSuccess": "¡Dirección de buzón añadida con éxito!",
+      "updateSuccess": "¡Dirección de buzón actualizada con éxito!",
+      "deleteSuccess": "¡Dirección de buzón eliminada con éxito!",
+      "toggleStatusError": "Error al alternar el estado",
+      "deleteError": "Error al eliminar el buzón"
+    }
+  },
+  "Compose": {
+    "newMessage": "Nuevo mensaje",
+    "discard": "Descartar",
+    "send": "Enviar",
+    "from": "De:",
+    "to": "Para",
+    "cc": "Cc",
+    "bcc": "Bcc",
+    "subject": "Asunto",
+    "toPlaceholder": "destinatario@example.com",
+    "ccPlaceholder": "cc@example.com",
+    "bccPlaceholder": "bcc@example.com",
+    "subjectPlaceholder": "Asunto del correo",
+    "bodyPlaceholder": "Escribe tu mensaje aquí...",
+    "normalText": "Texto normal",
+    "loadingMailboxes": "Cargando buzones...",
+    "selectMailbox": "Selecciona un buzón",
+    "toastSelectSender": "Por favor, selecciona un buzón de origen",
+    "toastEnterRecipient": "Por favor, introduce un destinatario",
+    "toastEnterSubject": "Por favor, introduce un asunto",
+    "toastEmailQueued": "Correo en cola para enviar",
+    "toastSendFailed": "Error al enviar el correo"
+  },
+  "AcceptInvite": {
+    "verifyingTokenError": "Falta el token de invitación.",
+    "verifyingFailedError": "Error al verificar la invitación. Por favor inténtalo de nuevo.",
+    "invalidTokenError": "Esta invitación no es válida o ha caducado.",
+    "passwordLengthError": "La contraseña debe tener al menos 8 caracteres.",
+    "passwordsMismatch": "Las contraseñas no coinciden.",
+    "acceptInviteFailed": "Error al aceptar la invitación.",
+    "networkError": "Ocurrió un error de red. Por favor inténtalo de nuevo.",
+    "verifying": "Verificando invitación...",
+    "returnToLogin": "Volver a iniciar sesión",
+    "successMessage": "¡Cuenta activada con éxito! Redirigiendo a la página de inicio de sesión...",
+    "title": "Unirse a Mailbox",
+    "subtitle": "Configura tu contraseña para completar el registro",
+    "emailLabel": "Dirección de correo electrónico",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Elige una contraseña",
+    "confirmPasswordLabel": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Repite la contraseña",
+    "submitting": "Activando cuenta...",
+    "submitButton": "Unirse a la plataforma"
+  },
+  "Metadata": {
+    "root": {
+      "title": "Mailbox",
+      "description": "Un cliente de correo moderno"
+    },
+    "auth": {
+      "title": "Autenticación",
+      "description": "Inicie sesión en Mailbox"
+    },
+    "acceptInvite": {
+      "title": "Aceptar invitación",
+      "description": "Acepta tu invitación"
+    },
+    "forgotPassword": {
+      "title": "Contraseña olvidada",
+      "description": "Restablece tu contraseña"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "description": "Inicie sesión en su cuenta"
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "description": "Crear una nueva contraseña"
+    },
+    "setup": {
+      "title": "Configuración",
+      "description": "Configuración inicial"
+    },
+    "inbox": {
+      "title": "Bandeja de entrada",
+      "description": "Ver su bandeja de entrada"
+    },
+    "users": {
+      "title": "Usuarios",
+      "description": "Administrar usuarios"
+    },
+    "starred": {
+      "title": "Destacados",
+      "description": "Ver correos destacados"
+    },
+    "mailboxes": {
+      "title": "Buzones",
+      "description": "Administrar sus buzones"
+    },
+    "trash": {
+      "title": "Papelera",
+      "description": "Ver correos eliminados"
+    },
+    "sent": {
+      "title": "Enviados",
+      "description": "Ver correos enviados"
+    },
+    "compose": {
+      "title": "Redactar",
+      "description": "Redactar un nuevo correo"
+    },
+    "drafts": {
+      "title": "Borradores",
+      "description": "Ver borradores de correo"
+    },
+    "settings": {
+      "title": "Configuración",
+      "description": "Configuración de Mailbox"
+    }
+  },
+  "Inbox": {
+    "trashSuccess": "Movido a la papelera",
+    "bulkTrashSuccess": "{count} correos movidos a la papelera",
+    "trashError": "Error al mover los correos a la papelera",
+    "readSuccess": "Marcado como leído",
+    "readError": "Error al marcar como leído",
+    "unreadSuccess": "Marcado como no leído",
+    "unreadError": "Error al marcar como no leído",
+    "starSuccess": "Correo destacado",
+    "starError": "Error al destacar el correo",
+    "unstarSuccess": "Correo no destacado",
+    "unstarError": "Error al quitar destacado del correo",
+    "bulkReadSuccess": "Correos marcados como leídos",
+    "bulkReadError": "Error al marcar los correos como leídos",
+    "bulkUnreadSuccess": "Correos marcados como no leídos",
+    "bulkUnreadError": "Error al marcar los correos como no leídos",
+    "emptyStateTitle": "Tu bandeja de entrada está vacía",
+    "emptyStateDescription": "¡Disfruta de tu bandeja de entrada vacía! Cuando recibas nuevos mensajes, aparecerán aquí automáticamente.",
+    "dialogTitleSingle": "Mover a la papelera",
+    "dialogTitleBulk": "Mover seleccionados a la papelera",
+    "dialogMessageSingle": "¿Estás seguro de que deseas mover este correo a la papelera?",
+    "dialogMessageBulk": "¿Estás seguro de que deseas mover estos {count} correos a la papelera?",
+    "confirmLabel": "Mover a la papelera",
+    "cancelLabel": "Cancelar",
+    "loading": "Cargando..."
+  },
+  "Drafts": {
+    "deleteSuccess": "Borrador eliminado",
+    "bulkDeleteSuccess": "{count} borradores eliminados",
+    "deleteError": "Error al eliminar borradores",
+    "emptyStateTitle": "No hay borradores guardados",
+    "emptyStateDescription": "Los borradores que guardes mientras redactas aparecerán aquí.",
+    "dialogTitleSingle": "Eliminar borrador",
+    "dialogTitleBulk": "Eliminar borradores seleccionados",
+    "dialogMessageSingle": "¿Estás seguro de que deseas eliminar permanentemente este borrador?",
+    "dialogMessageBulk": "¿Estás seguro de que deseas eliminar permanentemente estos {count} borradores?",
+    "confirmLabel": "Eliminar",
+    "cancelLabel": "Cancelar",
+    "loading": "Cargando..."
+  },
+  "Sent": {
+    "emptyStateTitle": "No hay correos enviados",
+    "emptyStateDescription": "Los correos que envíes aparecerán aquí.",
+    "loading": "Cargando..."
+  },
+  "Starred": {
+    "trashSuccess": "Movido a la papelera",
+    "trashError": "Error al mover el correo a la papelera",
+    "unreadSuccess": "Marcado como no leído",
+    "unreadError": "Error al marcar como no leído",
+    "starSuccess": "Correo destacado",
+    "starError": "Error al destacar el correo",
+    "unstarSuccess": "Correo no destacado",
+    "unstarError": "Error al quitar destacado del correo",
+    "emptyStateTitle": "No hay correos destacados",
+    "emptyStateDescription": "Destaca correos importantes para hacerles un seguimiento.",
+    "dialogTitle": "Mover a la papelera",
+    "dialogMessage": "¿Estás seguro de que deseas mover este correo a la papelera?",
+    "confirmLabel": "Mover a la papelera",
+    "cancelLabel": "Cancelar",
+    "loading": "Cargando..."
+  },
+  "Trash": {
+    "restoreSuccess": "Correo restaurado a la bandeja de entrada",
+    "bulkRestoreSuccess": "{count} correos restaurados a la bandeja de entrada",
+    "restoreError": "Error al restaurar correos",
+    "deleteSuccess": "Correo eliminado permanentemente",
+    "bulkDeleteSuccess": "{count} correos eliminados permanentemente",
+    "deleteError": "Error al eliminar correos permanentemente",
+    "emptyStateTitle": "La papelera está vacía",
+    "emptyStateDescription": "Los correos que elimines aparecerán aquí. Puedes restaurarlos o eliminarlos permanentemente.",
+    "dialogRestoreTitleSingle": "Restaurar correo",
+    "dialogRestoreTitleBulk": "Restaurar correos seleccionados",
+    "dialogRestoreMessageSingle": "¿Estás seguro de que deseas restaurar este correo a tu bandeja de entrada?",
+    "dialogRestoreMessageBulk": "¿Estás seguro de que deseas restaurar estos {count} correos a tu bandeja de entrada?",
+    "dialogDeleteTitleSingle": "Eliminar correo permanentemente",
+    "dialogDeleteTitleBulk": "Eliminar seleccionados permanentemente",
+    "dialogDeleteMessageSingle": "¿Estás seguro de que deseas eliminar permanentemente este correo? Esta acción no se puede deshacer.",
+    "dialogDeleteMessageBulk": "¿Estás seguro de que deseas eliminar permanentemente estos {count} correos? Esta acción no se puede deshacer.",
+    "confirmRestoreLabel": "Restaurar",
+    "confirmDeleteLabel": "Eliminar para siempre",
+    "cancelLabel": "Cancelar",
+    "loading": "Cargando..."
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "HomePage": {
+    "title": "To get started, edit the page.tsx file.",
+    "description": "Looking for a starting point or more instructions? Head over to",
+    "templates": "Templates",
+    "learning": "Learning",
+    "deploy": "Deploy Now",
+    "documentation": "Documentation"
+  },
+  "Sidebar": {
+    "inbox": "Inbox",
+    "mailboxes": "Mailboxes",
+    "sent": "Sent",
+    "drafts": "Drafts",
+    "starred": "Starred",
+    "trash": "Trash",
+    "users": "Users",
+    "settings": "Settings",
+    "logout": "Log out",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "closeMenu": "Close menu",
+    "compose": "Compose"
+  },
+  "Users": {
+    "title": "Users",
+    "subtitle": "Manage application access, users, and roles",
+    "addUser": "Add User",
+    "name": "Name",
+    "email": "Email Address",
+    "role": "Role",
+    "status": "Status",
+    "actions": "Actions",
+    "placeholder": {
+      "title": "User Management is coming soon",
+      "description": "This is a placeholder interface. Once the user management feature is completed, you will be able to add, edit, and deactivate accounts from this screen."
+    },
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading system users...",
+    "editUser": "Edit User",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "statusDesc": "Enable or disable this user account",
+    "mailboxAccess": "Mailbox Access",
+    "noUsersFound": "No users found.",
+    "noMailboxesFound": "No mailboxes found.",
+    "loadingMailboxes": "Loading mailboxes...",
+    "allFieldsRequired": "All fields are required",
+    "saving": "Saving...",
+    "editDetails": "Edit Details",
+    "banAccount": "Ban Account",
+    "unbanAccount": "Unban Account",
+    "deleteUser": "Delete User",
+    "deactivateUser": "Deactivate User",
+    "deleteConfirmTitle": "Delete User",
+    "deactivateConfirmTitle": "Deactivate User",
+    "deleteConfirmMessage": "Are you sure you want to delete {name}?",
+    "deactivateConfirmMessage": "Are you sure you want to deactivate {name}?",
+    "banConfirmTitle": "Ban User",
+    "unbanConfirmTitle": "Unban User",
+    "banConfirmMessage": "Are you sure you want to ban {name}? This will terminate their active sessions and prevent them from logging in.",
+    "unbanConfirmMessage": "Are you sure you want to unban {name}?",
+    "toasts": {
+      "banSuccess": "User banned successfully!",
+      "unbanSuccess": "User unbanned successfully!",
+      "deleteSuccess": "User removed successfully!",
+      "updateSuccess": "User updated successfully!",
+      "createSuccess": "User added successfully!",
+      "banError": "Failed to update user status",
+      "deleteError": "Failed to delete user",
+      "loadError": "Failed to load users"
+    }
+  },
+  "Navbar": {
+    "inbox": "Inbox",
+    "settings": "Settings",
+    "searchPlaceholder": "Search...",
+    "searchTooltip": "Search",
+    "notificationsTooltip": "Notifications",
+    "notificationsTitle": "Notifications",
+    "clearAll": "Clear all",
+    "noNotifications": "No new notifications",
+    "settingsTooltip": "Settings",
+    "menuLabel": "Open navigation menu"
+  },
+  "Settings": {
+    "loading": "Loading settings...",
+    "loginRequired": "You must be logged in to view settings.",
+    "goToLogin": "Go to Login",
+    "title": "Settings",
+    "subtitle": "Manage your account and preferences",
+    "profile": {
+      "title": "Profile",
+      "subtitle": "Update your personal information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "saving": "Saving...",
+      "saveChanges": "Save Changes"
+    },
+    "security": {
+      "title": "Security",
+      "subtitle": "Update your login credentials",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "updating": "Updating...",
+      "updatePassword": "Update Password"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "subtitle": "Customize your display settings",
+      "themeMode": "Theme Mode",
+      "themeSubtitle": "Switch between visual styles",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeSystem": "System",
+      "language": "Language",
+      "languageSubtitle": "Update application locale"
+    },
+    "diagnostics": {
+      "title": "System Diagnostics",
+      "subtitle": "Active database metrics and configurations",
+      "loading": "Loading diagnostics...",
+      "dbEngine": "Database Engine",
+      "activeSchema": "Active Schema",
+      "dbUrl": "Database URL",
+      "totalUsers": "Total Users",
+      "activeSessions": "Active Sessions",
+      "error": "Failed to load system diagnostics info."
+    },
+    "toasts": {
+      "profileSuccess": "Profile updated successfully!",
+      "profileError": "Failed to update profile",
+      "passwordMatchError": "New passwords do not match",
+      "passwordSuccess": "Password updated successfully!",
+      "passwordError": "Failed to update password"
+    },
+    "cloudflare": {
+      "title": "Cloudflare Email Routing",
+      "subtitle": "Programmatically connect your domain to receive inbound emails",
+      "apiToken": "Cloudflare API Token",
+      "apiTokenPlaceholder": "Enter your API token...",
+      "domain": "Target Domain",
+      "appUrl": "Application URL",
+      "submit": "Link Domain",
+      "delink": "Disconnect Domain",
+      "linkedStatus": "Integration active for",
+      "console": "Activity Log",
+      "routedDirectly": "All incoming mail to this domain is routed directly to your Next.js webhook.",
+      "disconnectTitle": "Disconnect Integration",
+      "disconnectDesc": "To safely remove the Cloudflare Worker script and clean up SMTP email routing rules, confirm your API token:",
+      "confirmApiToken": "Confirm API Token",
+      "confirmApiTokenPlaceholder": "Paste your Cloudflare API token...",
+      "removingScript": "Removing script...",
+      "noDomainAvailable": "⚠️ No Domain Available",
+      "noDomainAvailableDesc": "No active mailbox addresses were found. To receive mail via Cloudflare routing, please configure a mailbox address with a custom domain first.",
+      "configuringSetup": "Configuring Setup..."
+    },
+    "users": {
+      "title": "User Management",
+      "subtitle": "Invite and manage team members and permissions",
+      "manageButton": "Manage Users"
+    }
+  },
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Log in to your Mailbox account.",
+    "setupSuccess": "Setup complete! You can now log in.",
+    "forgotSuccess": "Password reset link sent! Please check your email inbox and spam folder.",
+    "resetSuccess": "Password reset complete! You can now log in.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email address...",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password...",
+    "forgotPassword": "Forgot password?",
+    "loggingIn": "Logging in...",
+    "loginButton": "Log in",
+    "noAccount": "Don't have an account?",
+    "registerHere": "Register here"
+  },
+  "Register": {
+    "title": "Create an account",
+    "subtitle": "Sign up to get started.",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "First name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Last name",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email address...",
+    "password": "Password",
+    "passwordPlaceholder": "Create a password (min 8 chars)...",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password...",
+    "creatingAccount": "Creating Account...",
+    "createAccountButton": "Create Account",
+    "alreadyAccount": "Already have an account?",
+    "loginHere": "Log in here",
+    "passwordsMismatch": "Passwords do not match"
+  },
+  "ForgotPassword": {
+    "checkEmail": "Check your email",
+    "sentLinkDesc": "We've sent a password reset link to your email address. If it doesn't arrive shortly, please check your spam folder.",
+    "backToLogin": "Back to log in",
+    "title": "Reset password",
+    "subtitle": "Enter your email to receive a reset link.",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email address...",
+    "sending": "Sending...",
+    "sendResetLink": "Send reset link"
+  },
+  "ResetPassword": {
+    "titleComplete": "Password reset complete",
+    "descComplete": "Your password has been successfully updated. You can now log in with your new password.",
+    "goToLogin": "Go to log in",
+    "title": "Create new password",
+    "subtitle": "Choose a new password for your account.",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Create new password...",
+    "confirmPassword": "Confirm New Password",
+    "confirmPasswordPlaceholder": "Confirm new password...",
+    "resetting": "Resetting...",
+    "resetButton": "Reset password",
+    "passwordsMismatch": "Passwords do not match"
+  },
+  "Setup": {
+    "title": "Initialize System",
+    "subtitle": "Create the primary OWNER account.",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "First name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Last name",
+    "email": "Email Address",
+    "emailPlaceholder": "owner@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Create password...",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm password...",
+    "creatingAccount": "Creating Account...",
+    "completeSetup": "Complete Setup",
+    "passwordsMismatch": "Passwords do not match"
+  },
+  "Mailboxes": {
+    "title": "Mailbox Addresses",
+    "subtitle": "Manage inbound email routing and recipients.",
+    "addMailbox": "Add Mailbox",
+    "editMailbox": "Edit Mailbox",
+    "displayName": "Display Name",
+    "emailAddress": "Email Address",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "created": "Created",
+    "actions": "Actions",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this mailbox? This will permanently delete all associated emails.",
+    "noMailboxes": "No mailboxes found.",
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address format",
+    "readOnlyWarning": "You have read-only access to mailbox addresses.",
+    "loading": "Loading mailbox addresses...",
+    "statusDesc": "Toggle active receiving status",
+    "saving": "Saving...",
+    "noName": "No Name",
+    "confirmDeactivate": "Are you sure you want to deactivate this mailbox?",
+    "toasts": {
+      "createSuccess": "Mailbox address added successfully!",
+      "updateSuccess": "Mailbox address updated successfully!",
+      "deleteSuccess": "Mailbox address deleted successfully!",
+      "toggleStatusError": "Failed to toggle status",
+      "deleteError": "Failed to delete mailbox"
+    }
+  },
+  "Compose": {
+    "newMessage": "New Message",
+    "discard": "Discard",
+    "send": "Send",
+    "from": "From:",
+    "to": "To",
+    "cc": "Cc",
+    "bcc": "Bcc",
+    "subject": "Subject",
+    "toPlaceholder": "recipient@example.com",
+    "ccPlaceholder": "cc@example.com",
+    "bccPlaceholder": "bcc@example.com",
+    "subjectPlaceholder": "Email Subject",
+    "bodyPlaceholder": "Write your message here...",
+    "normalText": "Normal text",
+    "loadingMailboxes": "Loading mailboxes...",
+    "selectMailbox": "Select a mailbox",
+    "toastSelectSender": "Please select a sender mailbox",
+    "toastEnterRecipient": "Please enter a recipient",
+    "toastEnterSubject": "Please enter a subject",
+    "toastEmailQueued": "Email queued for sending",
+    "toastSendFailed": "Failed to send email"
+  },
+  "AcceptInvite": {
+    "verifyingTokenError": "Invitation token is missing.",
+    "verifyingFailedError": "Failed to verify invitation. Please try again.",
+    "invalidTokenError": "This invitation is invalid or has expired.",
+    "passwordLengthError": "Password must be at least 8 characters long.",
+    "passwordsMismatch": "Passwords do not match.",
+    "acceptInviteFailed": "Failed to accept invitation.",
+    "networkError": "A network error occurred. Please try again.",
+    "verifying": "Verifying invitation...",
+    "returnToLogin": "Return to Login",
+    "successMessage": "Account activated successfully! Redirecting to login page...",
+    "title": "Join Mailbox",
+    "subtitle": "Configure your password to complete registration",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Choose a password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Repeat password",
+    "submitting": "Activating Account...",
+    "submitButton": "Join Platform"
+  },
+  "Metadata": {
+    "root": {
+      "title": "Mailbox",
+      "description": "A modern email client"
+    },
+    "auth": {
+      "title": "Authentication",
+      "description": "Sign in to Mailbox"
+    },
+    "acceptInvite": {
+      "title": "Accept Invite",
+      "description": "Accept your invitation"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "description": "Reset your password"
+    },
+    "login": {
+      "title": "Login",
+      "description": "Sign in to your account"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "description": "Create a new password"
+    },
+    "setup": {
+      "title": "Setup",
+      "description": "Initial setup"
+    },
+    "inbox": {
+      "title": "Inbox",
+      "description": "View your inbox"
+    },
+    "users": {
+      "title": "Users",
+      "description": "Manage users"
+    },
+    "starred": {
+      "title": "Starred",
+      "description": "View starred emails"
+    },
+    "mailboxes": {
+      "title": "Mailboxes",
+      "description": "Manage your mailboxes"
+    },
+    "trash": {
+      "title": "Trash",
+      "description": "View deleted emails"
+    },
+    "sent": {
+      "title": "Sent",
+      "description": "View sent emails"
+    },
+    "compose": {
+      "title": "Compose",
+      "description": "Compose a new email"
+    },
+    "drafts": {
+      "title": "Drafts",
+      "description": "View draft emails"
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Mailbox settings"
+    }
+  },
+  "Inbox": {
+    "trashSuccess": "Moved to trash",
+    "bulkTrashSuccess": "{count} emails moved to trash",
+    "trashError": "Failed to move emails to trash",
+    "readSuccess": "Marked as read",
+    "readError": "Failed to mark as read",
+    "unreadSuccess": "Marked as unread",
+    "unreadError": "Failed to mark as unread",
+    "starSuccess": "Email starred",
+    "starError": "Failed to star email",
+    "unstarSuccess": "Email unstarred",
+    "unstarError": "Failed to unstar email",
+    "bulkReadSuccess": "Emails marked as read",
+    "bulkReadError": "Failed to mark emails as read",
+    "bulkUnreadSuccess": "Emails marked as unread",
+    "bulkUnreadError": "Failed to mark emails as unread",
+    "emptyStateTitle": "Your inbox is empty",
+    "emptyStateDescription": "Enjoy your empty inbox! Once you receive new messages, they will appear here automatically.",
+    "dialogTitleSingle": "Move to Trash",
+    "dialogTitleBulk": "Move Selected to Trash",
+    "dialogMessageSingle": "Are you sure you want to move this email to the trash?",
+    "dialogMessageBulk": "Are you sure you want to move these {count} emails to the trash?",
+    "confirmLabel": "Move to Trash",
+    "cancelLabel": "Cancel",
+    "loading": "Loading..."
+  },
+  "Drafts": {
+    "deleteSuccess": "Draft deleted",
+    "bulkDeleteSuccess": "{count} drafts deleted",
+    "deleteError": "Failed to delete drafts",
+    "emptyStateTitle": "No saved drafts",
+    "emptyStateDescription": "Drafts you save while composing will appear here.",
+    "dialogTitleSingle": "Delete Draft",
+    "dialogTitleBulk": "Delete Selected Drafts",
+    "dialogMessageSingle": "Are you sure you want to permanently delete this draft?",
+    "dialogMessageBulk": "Are you sure you want to permanently delete these {count} drafts?",
+    "confirmLabel": "Delete",
+    "cancelLabel": "Cancel",
+    "loading": "Loading..."
+  },
+  "Sent": {
+    "emptyStateTitle": "No sent emails",
+    "emptyStateDescription": "Emails you send will appear here.",
+    "loading": "Loading..."
+  },
+  "Starred": {
+    "trashSuccess": "Moved to trash",
+    "trashError": "Failed to move email to trash",
+    "unreadSuccess": "Marked as unread",
+    "unreadError": "Failed to mark as unread",
+    "starSuccess": "Email starred",
+    "starError": "Failed to star email",
+    "unstarSuccess": "Email unstarred",
+    "unstarError": "Failed to unstar email",
+    "emptyStateTitle": "No starred emails",
+    "emptyStateDescription": "Star important emails to keep track of them.",
+    "dialogTitle": "Move to Trash",
+    "dialogMessage": "Are you sure you want to move this email to the trash?",
+    "confirmLabel": "Move to Trash",
+    "cancelLabel": "Cancel",
+    "loading": "Loading..."
+  },
+  "Trash": {
+    "restoreSuccess": "Email restored to inbox",
+    "bulkRestoreSuccess": "{count} emails restored to inbox",
+    "restoreError": "Failed to restore emails",
+    "deleteSuccess": "Email permanently deleted",
+    "bulkDeleteSuccess": "{count} emails permanently deleted",
+    "deleteError": "Failed to delete emails permanently",
+    "emptyStateTitle": "Trash is empty",
+    "emptyStateDescription": "Emails you delete will appear here. You can restore them or permanently delete them.",
+    "dialogRestoreTitleSingle": "Restore Email",
+    "dialogRestoreTitleBulk": "Restore Selected Emails",
+    "dialogRestoreMessageSingle": "Are you sure you want to restore this email to your inbox?",
+    "dialogRestoreMessageBulk": "Are you sure you want to restore these {count} emails to your inbox?",
+    "dialogDeleteTitleSingle": "Permanently Delete Email",
+    "dialogDeleteTitleBulk": "Permanently Delete Selected",
+    "dialogDeleteMessageSingle": "Are you sure you want to permanently delete this email? This action cannot be undone.",
+    "dialogDeleteMessageBulk": "Are you sure you want to permanently delete these {count} emails? This action cannot be undone.",
+    "confirmRestoreLabel": "Restore",
+    "confirmDeleteLabel": "Delete Forever",
+    "cancelLabel": "Cancel",
+    "loading": "Loading..."
+  }
+}

@@ -1,0 +1,174 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ─────────────────────────────────────────
+// AUTH (existing — untouched)
+// ─────────────────────────────────────────
+
+model User {
+  id           String   @id @default(cuid())
+  firstName    String
+  lastName     String
+  email        String   @unique
+  passwordHash String
+  profileImage String?
+  role         String   @default("MEMBER")
+  isActive     Boolean  @default(true)
+  isBanned     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  sessions      Session[]
+  readEmails    UserReadEmail[]
+  savedEmails   UserSavedEmail[]
+  trashedEmails UserTrashedEmail[]
+  mailboxAccess UserMailboxAccess[]
+  drafts        Draft[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─────────────────────────────────────────
+// EMAIL CORE
+// ─────────────────────────────────────────
+
+/// An inbox address the team receives mail on (e.g. support@company.com).
+model MailboxAddress {
+  id               String   @id @default(cuid())
+  address          String   @unique
+  displayName      String?
+  isActive         Boolean  @default(true)
+  cloudflareLinked Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  emails     Email[]
+  userAccess UserMailboxAccess[]
+  drafts     Draft[]
+}
+
+/// A many-to-many link granting a User access to a MailboxAddress
+model UserMailboxAccess {
+  userId           String
+  mailboxAddressId String
+  assignedAt       DateTime @default(now())
+
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mailboxAddress MailboxAddress @relation(fields: [mailboxAddressId], references: [id], onDelete: Cascade)
+
+  @@id([userId, mailboxAddressId])
+}
+
+/// A single inbound email. Immutable after insert.
+/// @db.Text used on body fields — MySQL VARCHAR has a 65535 byte limit.
+model Email {
+  id               String   @id @default(cuid())
+  mailboxAddressId String
+  messageId        String   @unique
+  inReplyTo        String?
+  references       String?
+  threadKey        String?
+  fromAddress      String
+  fromName         String?
+  subject          String
+  bodyText         String   @db.Text
+  bodyHtml         String?  @db.Text
+  receivedAt       DateTime @default(now())
+
+  mailboxAddress MailboxAddress     @relation(fields: [mailboxAddressId], references: [id])
+  readBy         UserReadEmail[]
+  savedBy        UserSavedEmail[]
+  trashedBy      UserTrashedEmail[]
+}
+
+/// Row exists = this user has read this email.
+model UserReadEmail {
+  userId  String
+  emailId String
+  readAt  DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email Email @relation(fields: [emailId], references: [id], onDelete: Cascade)
+
+  @@id([userId, emailId])
+}
+
+/// Row exists = this user has saved/starred this email.
+model UserSavedEmail {
+  userId  String
+  emailId String
+  savedAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email Email @relation(fields: [emailId], references: [id], onDelete: Cascade)
+
+  @@id([userId, emailId])
+}
+
+/// Row exists = this user has moved this email to trash (soft delete).
+model UserTrashedEmail {
+  userId    String
+  emailId   String
+  trashedAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email Email @relation(fields: [emailId], references: [id], onDelete: Cascade)
+
+  @@id([userId, emailId])
+}
+
+/// Outbound email queue job.
+model EmailJob {
+  id              String    @id @default(cuid())
+  to              String    @db.Text
+  cc              String?   @db.Text
+  bcc             String?   @db.Text
+  subject         String    @db.Text
+  bodyText        String    @db.LongText
+  bodyHtml        String?   @db.LongText
+  fromAddress     String?
+  attachmentsJson String?   @db.LongText // JSON-encoded MailAttachment[]
+  status          String    @default("PENDING") // PENDING, PROCESSING, SENT, FAILED
+  priority        Int       @default(2) // 1: LOW, 2: DEFAULT, 3: HIGH
+  attempts        Int       @default(0)
+  error           String?   @db.Text
+  createdAt       DateTime  @default(now())
+  processedAt     DateTime?
+}
+
+/// A draft email created by a user before it is sent.
+model Draft {
+  id               String   @id @default(cuid())
+  userId           String
+  mailboxAddressId String?
+  to               String?
+  cc               String?
+  bcc              String?
+  subject          String?
+  bodyText         String?  @db.LongText
+  bodyHtml         String?  @db.LongText
+  attachmentsJson  String?  @db.LongText // JSON-encoded MailAttachment[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mailboxAddress MailboxAddress? @relation(fields: [mailboxAddressId], references: [id], onDelete: SetNull)
+}
