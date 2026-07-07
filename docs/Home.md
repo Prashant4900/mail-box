@@ -53,3 +53,4 @@ External Sender → Cloudflare Email Routing → Cloudflare Worker
 This project is licensed under the **Business Source License 1.1 (BUSL-1.1)**.  
 Free for personal and non-commercial use. Commercial use requires a paid license.  
 Contact **prashantnigam490@gmail.com** for commercial inquiries.
+
