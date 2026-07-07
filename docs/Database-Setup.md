@@ -122,9 +122,12 @@ prisma/
 ├── sqlite/
 │   ├── schema.prisma          # SQLite schema
 │   └── migrations/            # SQLite migration history
-└── postgres/
-    ├── schema.prisma          # PostgreSQL schema
-    └── migrations/            # PostgreSQL migration history
+├── postgres/
+│   ├── schema.prisma          # PostgreSQL schema
+│   └── migrations/            # PostgreSQL migration history
+└── mysql/
+    ├── schema.prisma          # MySQL schema
+    └── migrations/            # MySQL migration history
 ```
 
 The active schema is controlled by your `prisma.config.ts` file, which reads from the `DATABASE_URL` environment variable.

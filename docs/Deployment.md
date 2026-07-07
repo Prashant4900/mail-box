@@ -21,7 +21,7 @@ In the Vercel project settings, add the following environment variables:
 | Variable | Description |
 |----------|-------------|
 | `DATABASE_URL` | Pooled connection string from Neon/Supabase |
-| `AUTH_SECRET` | A long random secret string (use `openssl rand -base64 32`) |
+| `WEBHOOK_SECRET` | A long random secret string (use `openssl rand -hex 32`) |
 | `SMTP_HOST` | Outgoing SMTP server |
 | `SMTP_PORT` | SMTP port (465 or 587) |
 | `SMTP_USER` | SMTP username |

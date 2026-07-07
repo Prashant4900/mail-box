@@ -18,6 +18,8 @@ Mailbox sits between your DNS provider (Cloudflare) and your team. It handles in
 | [Architecture](Architecture) | 4-layer code architecture and system design |
 | [Database Setup](Database-Setup) | SQLite, PostgreSQL, MySQL, and serverless options |
 | [Cloudflare Setup](Cloudflare-Setup) | Connect your domain for inbound email routing |
+| [SMTP & Sending](SMTP-and-Sending) | Configure outbound email, job queue flow, and API providers |
+| [Users & Access](Users-and-Access) | Roles, permissions, invite flow, and security policies |
 | [Deployment](Deployment) | Deploy to Vercel or self-host with Docker |
 
 ---
