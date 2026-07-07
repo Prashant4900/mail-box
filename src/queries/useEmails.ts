@@ -210,6 +210,32 @@ export function useSendEmailMutation() {
   });
 }
 
+export function useSendReplyMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (payload: {
+      fromId: string;
+      to: string;
+      subject: string;
+      bodyText: string;
+    }) => {
+      const res = await fetch("/api/emails/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to send reply");
+      return data.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["threads"] });
+      queryClient.invalidateQueries({ queryKey: ["sent-emails"] });
+    },
+  });
+}
+
+
 interface ListSentEmailsResponse {
   items: import("@/types").EmailJob[];
   total: number;

@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { Icons } from "@/components/icons";
 import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
+import { useMailboxAddressesQuery } from "@/queries/useMailboxAddresses";
+import { useSendReplyMutation } from "@/queries/useEmails";
 import type { EmailThread, EmailWithState } from "@/types";
 
 export interface ThreadReadingPaneProps {
@@ -78,6 +80,181 @@ function splitQuoted(bodyText: string): {
   const body = lines.slice(0, splitIndex).join("\n").trim();
   const quoted = lines.slice(splitIndex).join("\n").trim();
   return { body, quoted };
+}
+
+// ── ReplyBox ──────────────────────────────────────────────────────────────────
+// Inline reply composer shown at the bottom of a thread.
+function ReplyBox({
+  replyTo,
+  replyToAddress,
+  subject,
+}: {
+  replyTo: string;
+  replyToAddress: string;
+  subject: string;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [body, setBody] = useState("");
+  const [selectedFromId, setSelectedFromId] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const { data: mailboxData } = useMailboxAddressesQuery();
+  const mailboxes = mailboxData?.mailboxes ?? [];
+  const sendReply = useSendReplyMutation();
+
+  // Default to first available mailbox
+  useEffect(() => {
+    if (mailboxes.length > 0 && !selectedFromId) {
+      setSelectedFromId(mailboxes[0].id);
+    }
+  }, [mailboxes, selectedFromId]);
+
+  // Auto-focus textarea when box opens
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => textareaRef.current?.focus(), 50);
+    }
+  }, [isOpen]);
+
+  const replySubject = subject.toLowerCase().startsWith("re:")
+    ? subject
+    : `Re: ${subject}`;
+
+  const handleSend = async () => {
+    setError(null);
+    if (!body.trim()) {
+      setError("Reply cannot be empty.");
+      return;
+    }
+    if (!selectedFromId) {
+      setError("Please select a mailbox address to send from.");
+      return;
+    }
+    try {
+      await sendReply.mutateAsync({
+        fromId: selectedFromId,
+        to: replyToAddress,
+        subject: replySubject,
+        bodyText: body.trim(),
+      });
+      setSuccess(true);
+      setBody("");
+      setTimeout(() => {
+        setSuccess(false);
+        setIsOpen(false);
+      }, 1500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send reply.");
+    }
+  };
+
+  if (!isOpen) {
+    return (
+      <div className="mt-4 pt-4 border-t border-border/40">
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-surface-hover/30 hover:bg-surface-hover/60 transition-colors text-left group"
+        >
+          <Icons.Reply className="w-4 h-4 text-text-muted group-hover:text-accent transition-colors shrink-0" />
+          <span className="text-[13px] text-text-muted group-hover:text-text-secondary transition-colors">
+            Reply to <span className="font-medium">{replyTo}</span>…
+          </span>
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4 pt-4 border-t border-border/40">
+      <div className="rounded-xl border border-border bg-background shadow-sm overflow-hidden">
+        {/* Reply header */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/60 bg-surface-hover/20">
+          <div className="flex items-center gap-2 text-[12px] text-text-muted min-w-0">
+            <Icons.Reply className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">
+              Reply to <span className="font-medium text-primary-text">{replyTo}</span>
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => { setIsOpen(false); setBody(""); setError(null); }}
+            className="text-text-muted hover:text-primary-text transition-colors ml-2 shrink-0"
+            title="Close reply"
+          >
+            <Icons.Close className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* From selector */}
+        {mailboxes.length > 1 && (
+          <div className="flex items-center gap-2 px-4 py-2 border-b border-border/40 bg-surface-hover/10">
+            <span className="text-[12px] text-text-muted shrink-0">From:</span>
+            <select
+              value={selectedFromId}
+              onChange={(e) => setSelectedFromId(e.target.value)}
+              className="text-[12px] text-primary-text bg-transparent border-none outline-none flex-1 cursor-pointer"
+            >
+              {mailboxes.map((mb) => (
+                <option key={mb.id} value={mb.id}>
+                  {mb.displayName ? `${mb.displayName} <${mb.address}>` : mb.address}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* Textarea */}
+        <textarea
+          ref={textareaRef}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder="Write your reply…"
+          rows={5}
+          className="w-full px-4 py-3 text-[14px] text-primary-text bg-transparent resize-none outline-none placeholder:text-text-muted leading-relaxed"
+        />
+
+        {/* Error message */}
+        {error && (
+          <p className="px-4 pb-2 text-[12px] text-destructive">{error}</p>
+        )}
+
+        {/* Footer actions */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-t border-border/40 bg-surface-hover/10">
+          <span className="text-[11px] text-text-muted">
+            {replySubject}
+          </span>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => { setIsOpen(false); setBody(""); setError(null); }}
+              disabled={sendReply.isPending}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="default"
+              size="sm"
+              onClick={handleSend}
+              disabled={sendReply.isPending || success}
+              className="min-w-[80px]"
+            >
+              {success ? (
+                <><Icons.Success className="w-4 h-4 mr-1" /> Sent!</>
+              ) : sendReply.isPending ? (
+                <><Icons.Spinner className="w-4 h-4 mr-1 animate-spin" /> Sending…</>
+              ) : (
+                <><Icons.Reply className="w-4 h-4 mr-1" /> Send Reply</>
+              )}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 // A single collapsed/expanded email bubble inside the thread
@@ -399,6 +576,15 @@ export function ThreadReadingPane({
               onToggle={() => toggleBubble(email.id)}
             />
           ))}
+
+          {/* Inline reply box — only in inbox and starred */}
+          {(folder === "inbox" || folder === "starred") && (
+            <ReplyBox
+              replyTo={latestEmail.fromName || latestEmail.fromAddress}
+              replyToAddress={latestEmail.fromAddress}
+              subject={thread.subject}
+            />
+          )}
         </div>
       </div>
     </div>

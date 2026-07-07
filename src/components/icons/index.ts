@@ -18,6 +18,7 @@ import {
   Moon01Icon,
   MoreVerticalIcon,
   Notification01Icon,
+  ReplayIcon,
   Search01Icon,
   SentIcon,
   Settings01Icon,
@@ -55,6 +56,7 @@ export const Icons = {
   Link: Link01Icon,
   Image: Image01Icon,
   Attachment: Attachment01Icon,
+  Reply: ReplayIcon,
   Spinner: Loading03Icon,
   Google: (props: React.SVGProps<SVGSVGElement>) =>
     React.createElement(
