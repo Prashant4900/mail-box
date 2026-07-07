@@ -68,6 +68,9 @@ Mailbox will automatically:
 - Write a Cloudflare Worker script to forward MIME payloads to your webhook.
 - Create the catch-all email routing rule for `*@yourcompany.com`.
 
+> [!IMPORTANT]
+> **Your API Token is never stored.** Mailbox uses your Cloudflare API Token **one time only** — to deploy the Worker script and create the routing rules during the linking process. Once the setup is complete, the token is **immediately discarded** and is never written to the database, logs, or any file on disk. You are safe to delete or revoke the token from your Cloudflare dashboard after linking if you wish.
+
 ---
 
 ## Step 3 — Add Mailbox Addresses
