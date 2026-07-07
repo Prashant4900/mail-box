@@ -1,0 +1,59 @@
+name: Sync Docs to Wiki
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+
+  # Allow manual trigger from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout Wiki repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}.wiki
+          path: wiki
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync docs/ to Wiki
+        run: |
+          # Clear existing wiki content (except .git)
+          find wiki -mindepth 1 -not -path 'wiki/.git*' -delete
+
+          # Copy all docs into the wiki repo root
+          cp -r docs/. wiki/
+
+          echo "✅ Synced docs/ to wiki:"
+          ls -la wiki/
+
+      - name: Commit and push Wiki changes
+        run: |
+          cd wiki
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          # Only commit if there are actual changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit. Wiki is already up to date."
+          else
+            COMMIT_SHA="${{ github.sha }}"
+            git commit -m "docs: sync wiki from main@${COMMIT_SHA:0:7}"
+            git push
+            echo "✅ Wiki updated successfully."
+          fi
