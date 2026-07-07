@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "node scripts/telemetry.js",
     "vercel-build": "prisma generate && prisma db push && next build",
     "start": "next start",
     "lint": "biome check",

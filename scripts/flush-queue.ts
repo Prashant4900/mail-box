@@ -1,10 +1,23 @@
 import { prisma } from "../src/clients/prisma";
-import { MailQueueService } from "../src/services/mail-queue.service";
 
 async function main() {
-  console.log("Flushing mail queue...");
-  await MailQueueService.processQueue();
-  console.log("Queue flushed.");
-  await prisma.$disconnect();
+  console.log("Starting queue flush process...");
+  
+  // Example of cleaning up processed or failed email jobs
+  const result = await prisma.emailJob.deleteMany({
+    where: {
+      status: {
+        in: ["SENT", "FAILED"]
+      }
+    }
+  });
+
+  console.log(`✅ Flushed ${result.count} old jobs from the queue.`);
 }
-main().catch(console.error);
+
+main().catch(e => {
+  console.error("❌ Failed to flush queue:", e);
+  process.exit(1);
+}).finally(async () => {
+  await prisma.$disconnect();
+});
