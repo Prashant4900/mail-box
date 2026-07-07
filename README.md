@@ -198,3 +198,5 @@ npm run docker:up
 ## 📄 License
 
 This project is licensed under the **Business Source License 1.1 (BUSL-1.1)** — free for personal and non-commercial use, commercial use requires a paid license. See the [LICENSE](file:///Users/abc/Desktop/email-service/LICENSE) file for full terms or contact **prashantnigam490@gmail.com** for commercial inquiries.
+
+<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=ecc1515f-ee84-44a7-aec4-09b71ab3e5a5" />
